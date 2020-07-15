@@ -2,11 +2,14 @@ import React from "react";
 import LayOut from "./pages/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <LayOut />
+      <Router>
+        <LayOut />
+      </Router>
     </>
   );
 }

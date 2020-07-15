@@ -1,11 +1,19 @@
 import React from "react";
 import "./Sidebar.css";
+import { Link } from "react-router-dom";
+
 const SideBar = () => {
   return (
     <>
       <header>
-        <h1 style={{ fontSize: "1.5rem" }}>KSR Blog</h1>
-        <img className="profile" src={"./Profile.PNG"} alt="Profile"></img>
+        <Link to="/">
+          <h1 style={{ fontSize: "1.5rem" }}>KSR Blog</h1>
+        </Link>
+        <img
+          className="profile"
+          src={"http://localhost/Profile.PNG"}
+          alt="Profile"
+        ></img>
         <div className="my-info">
           <h1 style={{ fontSize: "1.3rem" }}>Kim Seung Rae</h1>
           <p>Full Stack Developer</p>
@@ -15,7 +23,7 @@ const SideBar = () => {
         </div>
         <ul>
           <li>
-            <a href={"https://blog.naver.com/ksrlogic"}>
+            <a href={"https://blog.naver.com"}>
               <i className="fa fa-a"></i>
             </a>
           </li>

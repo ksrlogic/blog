@@ -73,6 +73,7 @@ a {
 }
 .CardImage {
   float: left;
+  margin-top: 0px;
 }
 .blogCard {
   margin-bottom: 3rem !important;
@@ -82,7 +83,7 @@ h2 {
   font-size: 20px;
   margin: 0;
   margin-bottom: 8px;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 h3 {
   font-size: 15px;
@@ -138,6 +139,120 @@ time {
   text-align: center;
   padding-top: 20px;
 }
+
+.create_button {
+  margin-top: 100px;
+  margin-left: 20%;
+  border-radius: 10%;
+  background-color: #5fcb71;
+  border-color: white;
+  color: #fff;
+  font-weight: bold;
+}
+html {
+  height: 100%;
+}
+/* CreatePage */
+form {
+  height: 100%;
+  padding: 30px;
+}
+.title {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding-left: 20px;
+  font-size: 30px;
+  margin-top: 50px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+.description {
+  outline: none;
+  resize: none;
+  height: 800px;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 30px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: grey;
+  opacity: 1; /* Firefox */
+}
+.title:focus {
+  outline: none !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.btn {
+  float: right;
+}
+.Media-component .fspan:after {
+  display: none;
+}
+.titleLink {
+  color: black;
+}
+.PPTitle {
+  padding-bottom: 100px;
+  border-bottom: 1px solid grey;
+}
+.PPDescription {
+  padding: 70px;
+  line-height: 30px;
+  border-bottom: 1px grey solid;
+}
+
+input {
+  display: block;
+}
+textarea {
+  resize: none;
+}
+.comment_author {
+  width: 126px;
+  height: 28px;
+  line-height: 29px;
+  padding: 2px 12px 0;
+  font-size: 12px;
+  vertical-align: top;
+  margin-bottom: 10px;
+}
+.comment_author:focus {
+  outline: #111;
+}
+.comment_input {
+  width: 956px;
+  height: 78px;
+  padding: 13px;
+  border: 1px solid #cecdce;
+  background: #fff;
+  font-size: 13px;
+  color: #333;
+  line-height: 18px;
+}
+
+.comment_wrapper {
+  margin-left: 30px;
+  border-bottom: 2px black solid;
+}
+.comment {
+  min-height: 100px;
+  padding-top: 20px;
+}
+.author {
+  margin-top: 20px;
+}
 /* Mobile */
 @media screen and (max-width: 900px) {
   header {
@@ -155,5 +270,20 @@ time {
   .mainHeader {
     margin-top: 10px;
     margin-bottom: 0px;
+  }
+  form {
+    padding: 0px;
+  }
+  h2 {
+    display: block;
+  }
+  img {
+    padding: 20px;
+  }
+  span {
+    font-size: 10px;
+  }
+  h3 {
+    padding-top: 20px;
   }
 }
