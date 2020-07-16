@@ -1,12 +1,10 @@
 import React from "react";
 
-const Comment = () => {
+const Comment = ({ author, comment }) => {
   return (
     <div className="comment_wrapper">
-      <h5 className="author">Author</h5>
-      <h3 className="comment">
-        CommentEx Lorem amet et dolor elit amet id. Cupidatat exercitation qui
-      </h3>
+      <h5 className="author">{author}</h5>
+      <h3 className="comment">{comment}</h3>
     </div>
   );
 };

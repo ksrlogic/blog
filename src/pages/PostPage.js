@@ -7,32 +7,58 @@ const PostPage = () => {
   let { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [comments, setComments] = useState([
+    {
+      author: "1234",
+      comment: "1234",
+      createdAt: "2020-07-15",
+      id: 1,
+      password: "1234",
+      postid: 8,
+      updatedAt: "2020-07-15",
+    },
+  ]);
   useEffect(() => {
     const fetchData = async () => {
-      const getData = await fetch(
-        `http://localhost:3000/api/get_a_post?id=${id}`
-      );
+      const getData = await fetch(`/api/get_a_post?id=${id}`);
       const Data = await getData.json();
       setTitle(Data.title);
       setDescription(Data.description);
     };
+
+    const fetchComment = async () => {
+      const getComments = await fetch(`/api/get_comment?id=${id}`);
+      const Comments = await getComments.json();
+      setComments(Comments);
+    };
     fetchData();
+    fetchComment();
   }, [id]);
 
   return (
     <>
       <h1 className="title PPTitle">
         {title}
-        <a href={`http://localhost:3000/api/delete?id=${id}`}>
-          <Button type="submit">DELETE</Button>{" "}
-        </a>
+        <form
+          className="deleteform"
+          method="POST"
+          action={`/api/delete?id=${id}`}
+        >
+          <Button type="submit">DELETE</Button>
+        </form>
       </h1>
       <h2 className="PPDescription">
         {description === "" ? "글 내용이 없습니다." : description}
       </h2>
-      <Comment />
-      <Comment />
-      <Comment />
+      {comments.map((comment) => {
+        return (
+          <Comment
+            key={comment.id}
+            author={comment.author}
+            comment={comment.comment}
+          />
+        );
+      })}
 
       <form method="POST" action={`/api/create_comment?id=${id}`}>
         <h2>Leave Comment</h2>

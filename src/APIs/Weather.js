@@ -36,7 +36,7 @@ const getIcon = (status) => {
       return (
         <img
           className="weather-icon"
-          src={"http://localhost/weather_icons/Thunderstorm.png"}
+          src={"/weather_icons/Thunderstorm.png"}
           alt="ThunderStorm"
         ></img>
       );
@@ -45,7 +45,7 @@ const getIcon = (status) => {
       return (
         <img
           className="weather-icon"
-          src={"http://localhost/weather_icons/Rain.png"}
+          src={"/weather_icons/Rain.png"}
           alt="Rain"
         ></img>
       );
@@ -54,7 +54,7 @@ const getIcon = (status) => {
       return (
         <img
           className="weather-icon"
-          src={"http://localhost/weather_icons/Drizzle.png"}
+          src={"/weather_icons/Drizzle.png"}
           alt="Drizzle"
         ></img>
       );
@@ -63,7 +63,7 @@ const getIcon = (status) => {
       return (
         <img
           className="weather-icon"
-          src={"http://localhost/weather_icons/Snow.png"}
+          src={"/weather_icons/Snow.png"}
           alt="Snow"
         ></img>
       );
@@ -72,7 +72,7 @@ const getIcon = (status) => {
       return (
         <img
           className="weather-icon"
-          src={"http://localhost/weather_icons/Clear.png"}
+          src={"/weather_icons/Clear.png"}
           alt="Clear"
         ></img>
       );
@@ -81,7 +81,7 @@ const getIcon = (status) => {
       return (
         <img
           className="weather-icon"
-          src={"http://localhost/weather_icons/cloud.png"}
+          src={"/weather_icons/cloud.png"}
           alt="Clouds"
         ></img>
       );
@@ -89,7 +89,7 @@ const getIcon = (status) => {
       return (
         <img
           className="weather-icon"
-          src={"http://localhost/weather_icons/Fog.png"}
+          src={"/weather_icons/Fog.png"}
           alt="Fog"
         ></img>
       );

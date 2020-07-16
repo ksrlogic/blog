@@ -14,8 +14,6 @@ header {
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 20px;
-  background: #5fcb71;
   color: #fff;
 }
 
@@ -34,7 +32,7 @@ p {
   text-align: center;
 }
 .my-info {
-  margin-bottom: 480px;
+  margin-bottom: 440px;
 }
 ul {
   display: block;
@@ -44,7 +42,7 @@ ul {
 
 li {
   display: inline;
-  padding-right: 60px;
+  padding-right: 20px;
   padding-left: 25px;
 }
 
@@ -149,8 +147,8 @@ time {
   color: #fff;
   font-weight: bold;
 }
-html {
-  height: 100%;
+ul {
+  margin: 0px;
 }
 /* CreatePage */
 form {
@@ -188,6 +186,7 @@ form {
   color: grey;
   opacity: 1; /* Firefox */
 }
+
 .title:focus {
   outline: none !important;
   border-top: none;
@@ -200,17 +199,19 @@ form {
 .Media-component .fspan:after {
   display: none;
 }
+
 .titleLink {
   color: black;
 }
 .PPTitle {
-  padding-bottom: 100px;
+  padding-bottom: 130px;
   border-bottom: 1px solid grey;
 }
 .PPDescription {
   padding: 70px;
   line-height: 30px;
   border-bottom: 1px grey solid;
+  min-height: 500px;
 }
 
 input {
@@ -253,6 +254,49 @@ textarea {
 .author {
   margin-top: 20px;
 }
+.Loginbtn {
+  color: black;
+}
+
+/* LoginPage */
+.LoginWrapper {
+  width: 500px;
+  background-color: gainsboro;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 65px;
+  padding-bottom: 50px;
+  padding-left: 55px;
+  padding-right: 55px;
+  border-radius: 20px;
+}
+.LoginTitle {
+  margin-bottom: 40px;
+}
+.input_for_login {
+  height: 68px;
+  padding: 0 25px 0 25px;
+  display: block;
+  width: 100%;
+  background: transparent;
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.2;
+  outline: none;
+  border: 2px solid white;
+}
+.LoginBtn {
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  border: 2px solid white;
+  background-color: lavender;
+  font-size: 20px;
+}
+.mt-15 {
+  margin-top: 15px;
+}
 /* Mobile */
 @media screen and (max-width: 900px) {
   header {
@@ -285,5 +329,15 @@ textarea {
   }
   h3 {
     padding-top: 20px;
+  }
+  .PPDescription {
+    padding: 10px;
+  }
+  .LoginWrapper {
+    width: 330px;
+    margin-top: 20px;
+    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }

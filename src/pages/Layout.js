@@ -7,6 +7,7 @@ import NavBar from "../Components/NavBar";
 import CreatePage from "./CreatePage";
 import { Route } from "react-router-dom";
 import PostPage from "./PostPage";
+import LoginPage from "./LoginPage";
 const LayOut = () => {
   return (
     <>
@@ -17,8 +18,9 @@ const LayOut = () => {
           <Col xs={12} md={8} className="layout">
             <h1 className="mainHeader">Gallery</h1>
             <Route exact path="/" component={CardContainer} />
-            <Route path="/create" component={CreatePage} />
-            <Route path="/post/:id" component={PostPage} />
+            <Route exact path="/create" component={CreatePage} />
+            <Route exact path="/post/:id" component={PostPage} />
+            <Route exact path="/login" component={LoginPage} />
           </Col>
           <Col className="" xs={12} md={1}>
             <Oddments />
