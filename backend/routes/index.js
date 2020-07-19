@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-
+const express = require("express");
+const router = express.Router();
+const sanitizeHtml = require("sanitize-html");
 //DB
 
 const posts = require("../DB/database").posts;
@@ -9,9 +9,20 @@ const comments = require("../DB/database").comments;
 /* GET home page. */
 router.post("/api/create_post", function (req, res, next) {
   console.log(req.body);
-  posts.create(req.body).then(() => {
-    res.redirect("/");
-  });
+
+  const title = sanitizeHtml(req.body.title);
+  const description = sanitizeHtml(req.body.description);
+  const author = sanitizeHtml(req.body.author);
+
+  posts
+    .create({
+      title: title,
+      description: description,
+      author: author,
+    })
+    .then(() => {
+      res.redirect("/");
+    });
 });
 
 //Comment
@@ -42,8 +53,16 @@ router.get("/api/create_post", function (req, res, next) {
   res.send("Hello world!");
 });
 
-router.get("/api/get_post", (req, res) => {
-  posts.findAll().then((value) => {
+router.get("/api/get_post?:id", async (req, res) => {
+  const id = Number(req.query.id);
+  let postCount = await posts.count({});
+
+  if (postCount % 5 !== 0) {
+    postCount -= postCount % 5;
+  }
+  const offset = postCount - (id - 1) * 5;
+
+  await posts.findAll({ limit: 5, offset: offset }).then((value) => {
     res.send(value);
   });
 });
@@ -57,14 +76,17 @@ router.get("/api/get_a_post?:id", (req, res) => {
       },
     })
     .then((data) => {
-      console.log(data);
       res.send(data);
     });
 });
 
+router.get("/api/get_count", (req, res) => {
+  posts.count({}).then((result) => {
+    res.send(`${result}`);
+  });
+});
 router.post("/api/delete?:id", (req, res) => {
   const id = req.query.id;
-  console.log(id);
   posts
     .destroy({
       where: {

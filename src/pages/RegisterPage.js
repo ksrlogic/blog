@@ -1,4 +1,4 @@
-import React, { useState, useEffect, version } from "react";
+import React, { useState, useEffect } from "react";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +34,7 @@ const RegisterPage = () => {
     if (password === "" || vfpassword === "" || email === "") {
       alert("안 채워진 곳이 존재합니다! Something's Empty!");
       e.preventDefault();
-    } else if (password != vfpassword) {
+    } else if (password !== vfpassword) {
       alert("비밀번호가 일치하지 않습니다. Incorrect Password.");
       e.preventDefault();
     } else if (password.includes(" ") || vfpassword.includes(" ")) {

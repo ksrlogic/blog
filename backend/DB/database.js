@@ -18,6 +18,11 @@ const posts = sequelize.define("Posts", {
   },
   description: {
     type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  author: {
+    type: DataTypes.STRING(20),
+    allowNull: false,
   },
 });
 

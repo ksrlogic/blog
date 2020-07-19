@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import store from "../store/index";
 
 const Logouted = () => {
   return (
@@ -19,7 +20,15 @@ const Logined = ({ username }) => {
     <>
       <p>Welcome {username}</p>
       <form method="POST" action="/auth/logout">
-        <button type="submit"> LogOut</button>
+        <button
+          onClick={() => {
+            store.dispatch({ type: "LogOut", status: 0 });
+          }}
+          type="submit"
+        >
+          {" "}
+          LogOut
+        </button>
       </form>
     </>
   );

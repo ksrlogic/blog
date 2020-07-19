@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Comment from "../Components/Comment";
 
@@ -7,6 +7,7 @@ const PostPage = () => {
   let { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [author, setAuthor] = useState("");
   const [comments, setComments] = useState([
     {
       author: "1234",
@@ -24,6 +25,7 @@ const PostPage = () => {
       const Data = await getData.json();
       setTitle(Data.title);
       setDescription(Data.description);
+      setAuthor(Data.author);
     };
 
     const fetchComment = async () => {
@@ -45,8 +47,10 @@ const PostPage = () => {
           action={`/api/delete?id=${id}`}
         >
           <Button type="submit">DELETE</Button>
+          <p className="post_author">Author: {author}</p>
         </form>
       </h1>
+
       <h2 className="PPDescription">
         {description === "" ? "글 내용이 없습니다." : description}
       </h2>

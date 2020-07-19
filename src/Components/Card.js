@@ -10,13 +10,13 @@ const CardPage = ({ id, description, createdAt, title }) => {
       <div className="Media-component">
         <h2>
           <Link className="titleLink" to={`/post/${id}`}>
-            {title}
+            {title === "" ? "제목없음" : title}
           </Link>
         </h2>
         <span>{createdAt}</span>
         <span>5 min read</span>
         <span className="fspan">8 comments</span>
-        <h3>{description}</h3>
+        <h3>{description === "" ? "내용없음" : description}</h3>
       </div>
     </div>
   );

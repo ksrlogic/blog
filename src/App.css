@@ -67,11 +67,14 @@ a {
 /* MainContainer */
 
 .CardContainer {
-  padding: 3rem !important;
+  padding: 3rem;
 }
 .CardImage {
   float: left;
   margin-top: 0px;
+  width: 120px;
+  height: 120px;
+  margin-right: 60px;
 }
 .blogCard {
   margin-bottom: 3rem !important;
@@ -81,7 +84,8 @@ h2 {
   font-size: 20px;
   margin: 0;
   margin-bottom: 8px;
-  padding-top: 30px;
+  margin-top: 20px;
+  padding-top: 10px;
 }
 h3 {
   font-size: 15px;
@@ -258,6 +262,12 @@ textarea {
   color: black;
 }
 
+.post_author {
+  float: left;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
 /* LoginPage */
 .LoginWrapper {
   width: 500px;
@@ -305,9 +315,7 @@ textarea {
   .layout {
     margin-left: 0;
   }
-  .Oddments {
-    display: none;
-  }
+
   .NavBar {
     display: block;
   }
@@ -339,5 +347,22 @@ textarea {
     padding: 10px;
     padding-top: 30px;
     padding-bottom: 30px;
+  }
+  .CardContainer {
+    padding: 10px;
+  }
+  .btn {
+    width: 25%;
+    font-size: 13px;
+    float: right;
+    margin-top: 10px;
+  }
+  .post_author {
+    font-size: 30%;
+    margin-top: 20px;
+    padding: 0px;
+  }
+  .comment_wrapper {
+    margin: 0px;
   }
 }

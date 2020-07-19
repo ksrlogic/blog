@@ -16,7 +16,8 @@
     "react-dom": "^16.13.1",
     "react-live-clock": "^4.0.5",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "set PORT=80 && react-scripts start",

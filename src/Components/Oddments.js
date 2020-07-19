@@ -3,6 +3,7 @@ import Weather from "../APIs/Weather";
 import Clock from "../APIs/Clock";
 import { Link } from "react-router-dom";
 import { Logined, Logouted } from "./LoginStatus";
+import store from "../store/index";
 
 const Oddments = () => {
   const [loginStatus, setLoginStatus] = useState();
@@ -13,6 +14,12 @@ const Oddments = () => {
     const fetchData = async () => {
       const getData = await fetch("/auth/login");
       const Data = await getData.json();
+      if (Data.passport.user) {
+        store.dispatch({
+          type: "IS_LOGINED",
+          email: JSON.stringify(Data.passport.user),
+        });
+      }
       setLoginStatus(JSON.stringify(Data.passport.user));
       setUsername(JSON.stringify(Data.passport.user));
     };
@@ -21,7 +28,7 @@ const Oddments = () => {
 
   return (
     <div className="Oddments">
-      {loginStatus ? <Logined username={username} /> : <Logouted />}
+      {store.getState().status ? <Logined username={username} /> : <Logouted />}
 
       <h1 style={{ marginTop: "30px" }}>Today's Weather</h1>
       <Weather />
@@ -29,6 +36,7 @@ const Oddments = () => {
       <button className="create_button">
         <Link to="/create">Create Post</Link>
       </button>
+      {store.status}
     </div>
   );
 };

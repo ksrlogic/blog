@@ -11,6 +11,8 @@ const logger = require("morgan");
 const sequelize = require("./DB/database").sequelize;
 const cors = require("cors");
 const userdb = require("./DB/database").users;
+const multer = require("multer");
+const upload = multer({ dest: "./public.images" });
 
 const session = require("express-session"); //session
 const MySQLStore = require("express-mysql-session")(session);
