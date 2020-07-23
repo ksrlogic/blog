@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardPage = ({ id, description, createdAt, title }) => {
+const CardPage = ({ id, description, createdAt, title, imagePath }) => {
   return (
     <div className="blogCard">
       <div className="Media-Image">
-        <img alt="Gallery" className="CardImage" src="./Sample.PNG" />
+        <img
+          alt="Gallery"
+          className="CardImage"
+          src={imagePath ? imagePath : "./Sample.PNG"}
+        />
       </div>
       <div className="Media-component">
         <h2>

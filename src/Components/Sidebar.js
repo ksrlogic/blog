@@ -7,7 +7,9 @@ const SideBar = () => {
     <>
       <header>
         <Link to="/">
-          <h1 style={{ fontSize: "1.5rem" }}>KSR Blog</h1>
+          <h1 className="title_sidebar" style={{ fontSize: "1.5rem" }}>
+            KSR Blog
+          </h1>
         </Link>
         <img
           className="profile"
@@ -16,10 +18,10 @@ const SideBar = () => {
         ></img>
         <div className="my-info">
           <h1 style={{ fontSize: "1.3rem" }}>Kim Seung Rae</h1>
-          <p>Full Stack Developer</p>
-          <p>JS</p>
-          <p>React NodeJS</p>
-          <p>JS Newbie</p>
+          <p className="infos">Full Stack Developer</p>
+          <p className="infos">JS</p>
+          <p className="infos">React NodeJS</p>
+          <p className="infos">JS Newbie</p>
         </div>
         <ul>
           <li>
@@ -33,7 +35,7 @@ const SideBar = () => {
             </a>
           </li>
         </ul>
-        <p>Email: ksrlogic@naver.com</p>
+        <p className="infos">Email: ksrlogic@naver.com</p>
       </header>
     </>
   );

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Comment from "../Components/Comment";
+import store from "../store/index";
 
 const PostPage = () => {
   let { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
+  const [imagesrc, setImageSrc] = useState("/Sample.PNG");
   const [comments, setComments] = useState([
     {
       author: "1234",
@@ -19,29 +21,37 @@ const PostPage = () => {
       updatedAt: "2020-07-15",
     },
   ]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const getData = await fetch(`/api/get_a_post?id=${id}`);
-      const Data = await getData.json();
-      setTitle(Data.title);
-      setDescription(Data.description);
-      setAuthor(Data.author);
-    };
+  const fetchData = async () => {
+    const getData = await fetch(`/api/get_a_post?id=${id}`);
+    const Data = await getData.json();
+    setTitle(Data.title);
+    setDescription(Data.description);
+    setAuthor(Data.author);
+    setImageSrc(Data.imagePath);
+  };
+  const fetchComment = async () => {
+    const getComments = await fetch(`/api/get_comment?id=${id}`);
+    const Comments = await getComments.json();
+    setComments(Comments);
+  };
 
-    const fetchComment = async () => {
-      const getComments = await fetch(`/api/get_comment?id=${id}`);
-      const Comments = await getComments.json();
-      setComments(Comments);
-    };
+  useEffect(() => {
     fetchData();
     fetchComment();
   }, [id]);
-
+  const canIDelete = (e) => {
+    const currentUser = store.getState().email;
+    if (currentUser !== author) {
+      alert("다른사람의 글을 지울 수 없습니다!");
+      e.preventDefault();
+    }
+  };
   return (
     <>
       <h1 className="title PPTitle">
         {title}
         <form
+          onSubmit={canIDelete}
           className="deleteform"
           method="POST"
           action={`/api/delete?id=${id}`}
@@ -50,10 +60,18 @@ const PostPage = () => {
           <p className="post_author">Author: {author}</p>
         </form>
       </h1>
-
-      <h2 className="PPDescription">
-        {description === "" ? "글 내용이 없습니다." : description}
-      </h2>
+      {imagesrc ? (
+        <img
+          alt="postimage"
+          className="postimage"
+          style={{ maxWidth: "400px" }}
+          src={imagesrc}
+        ></img>
+      ) : null}
+      <h2
+        dangerouslySetInnerHTML={{ __html: description }}
+        className="PPDescription"
+      ></h2>
       {comments.map((comment) => {
         return (
           <Comment

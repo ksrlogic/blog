@@ -27,13 +27,10 @@ header {
   margin-bottom: 20px;
 }
 
-p {
-  margin: 0 auto;
-  text-align: center;
-}
 .my-info {
   margin-bottom: 440px;
 }
+
 ul {
   display: block;
   margin-left: auto;
@@ -179,10 +176,11 @@ form {
   width: 100%;
   padding: 20px;
   margin-top: 20px;
-  font-size: 30px;
+
   border-top: none;
   border-left: none;
   border-right: none;
+  overflow: hidden;
 }
 
 ::placeholder {
@@ -307,7 +305,14 @@ textarea {
 .mt-15 {
   margin-top: 15px;
 }
+.postimage {
+  max-width: 400px;
+  text-align: center;
+  margin: 20px auto;
+  display: block;
+}
 /* Mobile */
+
 @media screen and (max-width: 900px) {
   header {
     display: none;

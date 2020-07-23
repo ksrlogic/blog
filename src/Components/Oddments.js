@@ -14,14 +14,16 @@ const Oddments = () => {
     const fetchData = async () => {
       const getData = await fetch("/auth/login");
       const Data = await getData.json();
-      if (Data.passport.user) {
+
+      if (Data.passport) {
         store.dispatch({
           type: "IS_LOGINED",
           email: JSON.stringify(Data.passport.user),
         });
+
+        setLoginStatus(JSON.stringify(Data.passport.user));
+        setUsername(JSON.stringify(Data.passport.user));
       }
-      setLoginStatus(JSON.stringify(Data.passport.user));
-      setUsername(JSON.stringify(Data.passport.user));
     };
     fetchData();
   }, [loginStatus, username]);

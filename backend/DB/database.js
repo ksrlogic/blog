@@ -24,6 +24,11 @@ const posts = sequelize.define("Posts", {
     type: DataTypes.STRING(20),
     allowNull: false,
   },
+  imagePath: {
+    type: DataTypes.STRING(100),
+    allowNull: true,
+    defaultValue: "./Sample.PNG",
+  },
 });
 
 const comments = sequelize.define("Comments", {

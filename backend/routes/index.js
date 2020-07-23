@@ -1,28 +1,66 @@
 const express = require("express");
 const router = express.Router();
 const sanitizeHtml = require("sanitize-html");
+const multer = require("multer");
+const path = require("path");
+const randomString = require("crypto-random-string");
+
+const storage = multer.diskStorage({
+  destination: "../public/images/",
+  filename: (req, file, cb) => {
+    cb(null, randomString({ length: 20 }) + path.extname(file.originalname));
+  },
+});
+
+const checkFileType = (file, cb) => {
+  const fileTypes = /jpeg|jpg|png|gif/;
+
+  const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+
+  const mimetype = fileTypes.test(file.mimetype);
+
+  if (extname && mimetype) {
+    return cb(null, true);
+  } else {
+    cb("Error : Images Only!");
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
+  limits: 1000000,
+});
 //DB
 
 const posts = require("../DB/database").posts;
 const comments = require("../DB/database").comments;
 
 /* GET home page. */
-router.post("/api/create_post", function (req, res, next) {
+router.post("/api/create_post", upload.single("image"), async (req, res) => {
   console.log(req.body);
-
   const title = sanitizeHtml(req.body.title);
   const description = sanitizeHtml(req.body.description);
   const author = sanitizeHtml(req.body.author);
-
-  posts
-    .create({
+  if (req.file) {
+    await posts.create({
       title: title,
       description: description,
       author: author,
-    })
-    .then(() => {
-      res.redirect("/");
+      imagePath: `/images/${req.file.filename}`,
     });
+  } else {
+    await posts.create({
+      title: title,
+      description: description,
+      author: author,
+      imagePath: `/Sample.PNG`,
+    });
+  }
+
+  res.redirect("/");
 });
 
 //Comment
@@ -49,9 +87,6 @@ router.get("/api/get_comment?:id", (req, res) => {
 });
 
 //Post
-router.get("/api/create_post", function (req, res, next) {
-  res.send("Hello world!");
-});
 
 router.get("/api/get_post?:id", async (req, res) => {
   const id = Number(req.query.id);
