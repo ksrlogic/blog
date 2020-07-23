@@ -44,7 +44,11 @@ const CardContainer = () => {
             id={post.id}
             title={post.title}
             description={
-              post.description.slice(0, 50).replace(regex, "") + "..."
+              post.description
+                .slice(0, 50)
+                .replace(regex, "")
+                .replace("<p", "")
+                .replace("<", "") + "..."
             }
             createdAt={post.createdAt}
           />
